@@ -1,0 +1,10 @@
+@import "prism-material-themes/themes/material-palenight";
+
+pre[class*=language] {
+  background: #000000;
+  @apply p-0 leading-snug whitespace-nowrap;
+}
+
+code[class*=language] {
+  @apply font-mono text-base;
+}
