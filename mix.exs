@@ -55,7 +55,7 @@ defmodule LiveMotionExamples.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
-      setup: ["deps.get"],
+      setup: ["deps.get", "cmd --cd assets npm install"],
       "assets.setup": ["cmd --cd assets npm install"],
       "assets.deploy": ["cmd --cd assets npm run deploy", "phx.digest"]
     ]
