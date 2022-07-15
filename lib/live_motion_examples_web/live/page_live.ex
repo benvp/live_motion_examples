@@ -74,6 +74,7 @@ defmodule LiveMotionExamplesWeb.PageLive do
   def render(assigns) do
     ~H"""
     <div class="m-auto max-w-screen-md py-6 space-y-16">
+      <img src={Routes.static_path(@socket, "/images/logo.png")} alt="LiveMotion" class="mb-12 h-32" />
       <div>
         <h2 class="mb-4 text-3xl font-bold">Basic animation</h2>
         <p>
