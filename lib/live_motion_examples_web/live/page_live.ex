@@ -73,8 +73,12 @@ defmodule LiveMotionExamplesWeb.PageLive do
 
   def render(assigns) do
     ~H"""
-    <div class="m-auto max-w-screen-md py-6 space-y-16">
-      <img src={Routes.static_path(@socket, "/images/logo.png")} alt="LiveMotion" class="mb-12 h-32" />
+    <div class="m-auto max-w-screen-md px-8 sm:px-0 py-6 space-y-16">
+      <img
+        src={Routes.static_path(@socket, "/images/logo.png")}
+        alt="LiveMotion"
+        class="w-fit sm:h-32 object-cover"
+      />
       <div>
         <h2 class="mb-4 text-3xl font-bold">Basic animation</h2>
         <p>
@@ -161,7 +165,7 @@ defmodule LiveMotionExamplesWeb.PageLive do
   defp example_1(assigns) do
     ~H"""
     <div>
-      <div class="pr-4 mb-4 flex justify-between items-end">
+      <div class="pr-4 mb-4 -mx-6 sm:mx-0 flex justify-between items-end">
         <.form let={f} for={:example_1} phx-change="example_change" class="flex space-x-4">
           <div>
             <%= label(f, :transform, class: "block text-sm font-medium text-gray-400") %>
@@ -204,8 +208,13 @@ defmodule LiveMotionExamplesWeb.PageLive do
   defp example_2(assigns) do
     ~H"""
     <div>
-      <div class="pr-4 mb-4 flex justify-between items-end">
-        <.form let={f} for={:example_2} phx-change="example_change" class="flex space-x-4">
+      <div class="pr-4 mb-4 -mx-6 sm:mx-0 flex justify-between items-end">
+        <.form
+          let={f}
+          for={:example_2}
+          phx-change="example_change"
+          class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4"
+        >
           <div>
             <%= label(f, :rotate, class: "block text-sm font-medium text-gray-400") %>
             <%= text_input(f, :rotate,
@@ -272,8 +281,13 @@ defmodule LiveMotionExamplesWeb.PageLive do
   defp example_3(assigns) do
     ~H"""
     <div>
-      <div class="pr-4 mb-4 flex justify-between items-end">
-        <.form let={f} for={:example_3} phx-change="example_change" class="flex space-x-4">
+      <div class="pr-4 mb-4 -mx-6 sm:mx-0 flex justify-between items-end">
+        <.form
+          let={f}
+          for={:example_3}
+          phx-change="example_change"
+          class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4"
+        >
           <div>
             <%= label(f, :rotate, class: "block text-sm font-medium text-gray-400") %>
             <%= text_input(f, :rotate,
@@ -341,7 +355,7 @@ defmodule LiveMotionExamplesWeb.PageLive do
   defp example_4(assigns) do
     ~H"""
     <div>
-      <div class="pr-4 mb-4 flex justify-between items-end">
+      <div class="pr-4 mb-4 -mx-6 sm:mx-0 flex justify-between items-end">
         <div></div>
         <.reset_button value="example_4" />
       </div>
@@ -399,21 +413,24 @@ defmodule LiveMotionExamplesWeb.PageLive do
 
   defp example(assigns) do
     ~H"""
-    <div class="flex flex-col rounded-lg border border-gray-800">
-      <div class="flex flex-1">
-        <div class="flex-1 border-r border-gray-800">
+    <div class="flex flex-col -mx-6 sm:m-0 rounded-lg border border-gray-800">
+      <div class="flex flex-col sm:flex-row flex-1">
+        <div class="flex-1 sm:border-r border-gray-800">
           <div class="border-b border-gray-800 px-4 py-2 text-gray-400 text-sm font-bold">
             HEEx
           </div>
-          <div class="px-5 py-4">
-            <pre id={@id} class="language-elixir" phx-hook="Prism">
-              <code><%= @code %></code>
+          <pre
+            id={@id}
+            class="language-elixir"
+            phx-hook="Prism"
+            style="margin: 0; padding: 1.0rem 1.25rem;"
+          >
+              <code class="text-sm"><%= @code %></code>
             </pre>
-          </div>
         </div>
 
-        <div class="flex flex-col flex-1 p-2">
-          <div class="flex flex-1 justify-center items-center overflow-hidden">
+        <div class="flex flex-col flex-1 border-t sm:border-t-0 border-gray-800">
+          <div class="flex flex-1 justify-center items-center overflow-hidden min-h-[200px]">
             <%= render_slot(@inner_block) %>
           </div>
         </div>

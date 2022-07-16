@@ -6,5 +6,5 @@ pre[class*=language] {
 }
 
 code[class*=language] {
-  @apply font-mono text-base;
+  @apply font-mono text-sm sm:text-base;
 }
