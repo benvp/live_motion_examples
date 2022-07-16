@@ -25,7 +25,7 @@ import Plausible from 'plausible-tracker';
 import { createLiveMotion } from 'live_motion';
 
 const plausible = Plausible({
-  domain: 'benvp.co',
+  domain: 'livemotion.benvp.co',
 });
 
 plausible.enableAutoPageviews();
