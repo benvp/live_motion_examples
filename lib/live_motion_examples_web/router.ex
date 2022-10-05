@@ -19,6 +19,7 @@ defmodule LiveMotionExamplesWeb.Router do
       pipe_through :browser
 
       live "/", PageLive
+      live "/dev", DevLive
     end
   end
 
