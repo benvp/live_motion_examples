@@ -43,7 +43,7 @@ defmodule LiveMotionExamples.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:live_motion, "~> 0.2.0"}
+      {:live_motion, path: "../live_motion"}
     ]
   end
 
