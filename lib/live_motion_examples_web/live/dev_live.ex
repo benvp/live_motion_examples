@@ -3,6 +3,8 @@ defmodule LiveMotionExamplesWeb.DevLive do
 
   require Logger
 
+  import LiveMotion
+
   alias LiveMotion.JS, as: MotionJS
 
   def mount(_params, _session, socket) do
@@ -46,23 +48,19 @@ defmodule LiveMotionExamplesWeb.DevLive do
     <div class="mt-12 max-w-screen-md m-auto flex justify-center space-y-4 flex-col items-center">
       <div class="my-4 flex flex-wrap items-center justify-center space-x-4">
         <%= if @visible do %>
-          <LiveMotion.motion
+          <.motion
             id={"rectangle-#{@index}"}
             class="w-24 h-24 bg-benvp-green flex rounded-lg justify-center items-center mb-4"
             initial={[opacity: 0, y: -30, rotate: 0]}
-            animate={
-              [
-                opacity: 1,
-                y: 0,
-                rotate: @rotate
-              ]
-            }
-            exit={
-              [
-                opacity: 0,
-                y: 30
-              ]
-            }
+            animate={[
+              opacity: 1,
+              y: 0,
+              rotate: @rotate
+            ]}
+            exit={[
+              opacity: 0,
+              y: 30
+            ]}
             transition={[duration: 2, easing: :spring]}
             hover={[scale: 1.2]}
             press={[scale: 0.9]}
