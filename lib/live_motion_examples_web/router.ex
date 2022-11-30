@@ -20,6 +20,7 @@ defmodule LiveMotionExamplesWeb.Router do
 
       live "/", PageLive
       live "/dev", DevLive
+      live "/content-update", ContentUpdateLive
     end
   end
 
