@@ -14,6 +14,12 @@ defmodule LiveMotionExamplesWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/", LiveMotionExamplesWeb do
+    pipe_through :api
+
+    get "/healthz", HealthzController, :index
+  end
+
   live_session :default do
     scope "/", LiveMotionExamplesWeb do
       pipe_through :browser

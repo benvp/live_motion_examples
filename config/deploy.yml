@@ -1,0 +1,55 @@
+service: livemotion_examples
+
+image: benvp/livemotion_examples
+
+servers:
+  - s01.benvp.co
+
+ssh:
+  user: benvp
+
+registry:
+  server: ghcr.io
+  username: benvp
+  password:
+    - MRSK_REGISTRY_PASSWORD
+
+env:
+  clear:
+    PORT: 3000
+    PHX_HOST: livemotion.benvp.co
+  secret:
+    - SECRET_KEY_BASE
+
+builder:
+  remote:
+    arch: amd64
+    host: ssh://benvp@s01.benvp.co
+
+healthcheck:
+  path: /healthz
+  interval: 30s
+  max_attempts: 10
+
+labels:
+  traefik.http.routers.livemotion_examples.rule: Host(`livemotion.benvp.co`)
+  traefik.http.routers.livemotion_examples_secure.entrypoints: websecure
+  traefik.http.routers.livemotion_examples_secure.rule: Host(`livemotion.benvp.co`)
+  traefik.http.routers.livemotion_examples_secure.tls.certresolver: letsencrypt
+
+traefik:
+  options:
+    publish:
+      - "443:443"
+    volume:
+      - "/letsencrypt/acme.json:/letsencrypt/acme.json"
+  args:
+    entryPoints.web.address: ":80"
+    entryPoints.web.http.redirections.entryPoint.to: websecure
+    entryPoints.web.http.redirections.entryPoint.scheme: https
+    entryPoints.web.http.redirections.entrypoint.permanent: true
+    entryPoints.websecure.address: ":443"
+    certificatesResolvers.letsencrypt.acme.email: "hi@benvp.co"
+    certificatesResolvers.letsencrypt.acme.storage: "/letsencrypt/acme.json"
+    certificatesResolvers.letsencrypt.acme.httpchallenge: true
+    certificatesResolvers.letsencrypt.acme.httpchallenge.entrypoint: web
